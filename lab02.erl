@@ -63,7 +63,7 @@ calculateCostHelper({TotalPrice, TotalQuantity},[{_, Quan, Price} | T]) ->
     calculateCostHelper({TotalPrice + (Price * Quan), TotalQuantity + Quan}, T).
 
 %Problem 10
-
+%RAN IN THE SHELL (See screenshots)
 %L = [{apples, 0.99,10,0.1},{oranges, 1.5, 20, 0.1},{peaches, 2.2, 5, 0.1}, {grapes, 5, 2, 0.1}, {melons, 1.75, 1, 0.1}].
 %calculateTotalCost(calculateCost(L)).
 
