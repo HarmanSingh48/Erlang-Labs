@@ -1,3 +1,4 @@
+%Names: Harman Singh, Zarif Mazumder, Maliha Hossain
 -module(cooperate).
 -export([producer/2, go/0, consumer/0]).
 
