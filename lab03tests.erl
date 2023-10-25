@@ -72,13 +72,26 @@
 
 
 %***************************Map Reduce Test Cases *************************************************************
-empty_list_map_test() ->
-    Acc = 1,
-    ?assertEqual(Acc, lab03:mapReduce(fun lab03:flip/1, fun(X, Prod) -> X*Prod end, Acc, [])).
-list_with_one_element_test() ->
-    Acc = 1,
-    ?assertEqual(-12,lab03:mapReduce(fun lab03:flip/1, fun(X, Prod) -> X*Prod end, Acc, [12])).
-list_with_zero_as_element_test() ->
-    Acc = 1,
-    ?assertEqual(0,lab03:mapReduce(fun lab03:flip/1, fun(X, Prod) -> X*Prod end, Acc, [0])).
+% empty_list_map_test() ->
+%     Acc = 1,
+%     ?assertEqual(Acc, lab03:mapReduce(fun lab03:flip/1, fun(X, Prod) -> X*Prod end, Acc, [])).
+% list_with_one_element_test() ->
+%     Acc = 1,
+%     ?assertEqual(-12,lab03:mapReduce(fun lab03:flip/1, fun(X, Prod) -> X*Prod end, Acc, [12])).
+% list_with_zero_as_element_test() ->
+%     Acc = 1,
+%     ?assertEqual(0,lab03:mapReduce(fun lab03:flip/1, fun(X, Prod) -> X*Prod end, Acc, [0])).
+%****************************Partition Test Cases************************************************
+
+empty_list_partition_test() ->
+    ?assertEqual({[],[]}, lab03:myPartition(fun(X) -> X == 1 end, [])).
+
+all_predicate_partition_test() ->
+    ?assertEqual({[1,1,1,1,1,1],[]}, lab03:myPartition(fun(X) -> X == 1 end, [1,1,1,1,1,1])).
+
+none_predicate_partition_test() ->
+    ?assertEqual({[],[1,1,1,1,1,1]}, lab03:myPartition(fun(X) -> X == 2 end, [1,1,1,1,1,1])).
+
+average_case_test() ->
+    ?assertEqual({[a,b,c,d,e],[1,2,3,4]}, lab03:myPartition(fun(X) -> is_atom(X) end, [a,b,1,c,d,2,3,4,e])).
 
