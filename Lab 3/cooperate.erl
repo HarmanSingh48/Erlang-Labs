@@ -18,4 +18,4 @@ consumer() ->
 
 go() ->
     PID = spawn(cooperate, consumer, []),
-    spawn(cooperate, producer, [PID,[1,2,3]]).
+    spawn(cooperate, producer, [PID,[1,2,3,4,5,6,7]]).
